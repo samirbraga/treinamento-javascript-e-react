@@ -4,5 +4,5 @@ Este repositório é dedicado apenas para auxílio da aula referente ao Workshop
 * [Parte I][1]
 * [Parte II][2]
 
-[1]: samirbraga/Workshop-Javascript-e-React/tree/master/parte%201/README.md
-[2]: samirbraga/Workshop-Javascript-e-React/tree/master/parte%202/README.md
+[1]: /parte%201/README.md
+[2]: /parte%202/README.md
