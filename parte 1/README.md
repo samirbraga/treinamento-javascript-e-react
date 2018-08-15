@@ -6,7 +6,7 @@ Todos os assuntos abaixo listados serão introduzidos com uma comparação frequ
 
 **Será abordado:**
 
-* [Declaração de Variáveis](#user-content-snippets-de-código-)
+* [Declaração de Variáveis](#user-content-declaração-de-variáveis-)
 * [Tipos de Dados](#user-content-tipos-de-dados-)
 * [Arrays](#user-content-arrays-)
 * [Objetos](#user-content-objetos-)
