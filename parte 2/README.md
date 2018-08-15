@@ -1,5 +1,6 @@
 # Workshop - JavaScript e ReactJS - Parte II
-Este arquivo é dedicado ao auxílio da aula referente a part II do Workshop - JavaScript e ReactJS.
+Este arquivo é dedicado ao auxílio da aula referente a parte II do Workshop - JavaScript e ReactJS. Tenha acesso a parte I [aqui](../parte%201/README.md).
+
 
 ## Assuntos Abordados
 Todos os assuntos abaixo listados serão introduzidos a partir de um certo conhecimento de javascript, podendo ser obtido na Parte I do Workshop.
