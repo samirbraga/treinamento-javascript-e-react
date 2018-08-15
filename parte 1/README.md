@@ -262,7 +262,7 @@ function join(...strings) {
 }
 ```
 
-### Assincronissidade [⇧](#assuntos-abordados)
+### Assincronicidade [⇧](#assuntos-abordados)
 
 ```javascript
 console.log("Primeiro");
