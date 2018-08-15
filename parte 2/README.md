@@ -71,8 +71,50 @@ class Botao extends React.Component {
 ### Web Components
 > *Web components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps. Custom components and widgets build on the Web Component standards, will work across modern browsers, and can be used with any JavaScript library or framework that works with HTML.*
 
+[*EXEMPLO DO GOOGLE*](https://developers.google.com/web/fundamentals/web-components/customelements?hl=pt-br)
+
 ```javascript
-class AppDrawer extends HTMLElement {...}
+class AppDrawer extends HTMLElement {
+  get open() {
+    return this.hasAttribute('open');
+  }
+
+  set open(val) {
+    if (val) {
+      this.setAttribute('open', '');
+    } else {
+      this.removeAttribute('open');
+    }
+    this.toggleDrawer();
+  }
+
+  get disabled() {
+    return this.hasAttribute('disabled');
+  }
+
+  set disabled(val) {
+    if (val) {
+      this.setAttribute('disabled', '');
+    } else {
+      this.removeAttribute('disabled');
+    }
+  }
+
+  constructor() {
+    super();
+
+    this.addEventListener('click', e => {
+      if (this.disabled) {
+        return;
+      }
+      this.toggleDrawer();
+    });
+  }
+
+  toggleDrawer() {
+    ...
+  }
+}
 
 window.customElements.define('app-drawer', AppDrawer);
 ```
@@ -83,17 +125,93 @@ window.customElements.define('app-drawer', AppDrawer);
 </div>
 ```
 
+#### Shadow DOM ####
+
+```javascript
+const header = document.createElement('header');
+const shadowRoot = header.attachShadow({ mode: 'open' });
+shadowRoot.innerHTML = '<h1>Hello Shadow DOM</h1>';
+```
+
 ### React Components
 ```javascript
-class Elemento extends React.Component {
+class ListItem extends React.Component {
     render() {
         return React.createElement(
-            'div',
+            'li',
             {
-                className: 'classe-element'
+                className: 'list-item',
             },
-            `Hello ${this.props.title}`
+            `ITEM - ${this.props.title}`
+        );
+    }
+}
+
+class List extends React.Component {
+    render() {
+        return React.createElement(
+            'ul',
+            {
+                className: 'classe-elemento',
+                id: 'id-elemento'
+            },
+            React.createElement(
+                ListItem,
+                {
+                    title: 'TASk TO DO 1',
+                }
+            ),
+            React.createElement(
+                ListItem,
+                {
+                    title: 'TASk TO DO 2',
+                },
+            )
         );
     }
 }
 ```
+
+### Como o React funciona?
+
+#### Webpack ####
+
+![Webpack](https://webpack.github.io/assets/what-is-webpack.png)
+
+#### Babel ####
+
+![Babel](babel.jpg)
+
+### JSX
+```jsx
+class ListItem extends React.Component {  
+    render() {
+    	return (
+            <li className="list-item">
+                ITEM - {this.props.title}
+            </li>
+        );
+    }
+}
+
+class List extends React.Component {  
+    render() {
+    	return (
+            <ul>
+            	<ListItem title="TASk TO DO 1" />
+            	<ListItem title="TASk TO DO 2" />
+            </ul>
+        );
+    }
+}
+```
+
+### Virtual DOM
+
+1) Cria uma representação do DOM na linguagem do Virtual DOM;
+2) Manda o Virtual DOM gerar o DOM real;
+3) Quando houver alteração no model, em vez de atualizar a DOM real você simplesmente manda regerar toda a representação Virtual DOM passando o novo estado do model como parâmetro;
+4) Então você usa o mecanismo de comparação para obter as diferenças entre a representação do Virtual DOM e o DOM real;
+5) E usa o mecanismo de patch que vai atualizar o DOM real conforme as diferenças observadas.
+
+![Virtual DOM](https://cdn-images-1.medium.com/max/800/1*CqdIWZy0NMPQhYx2rKzo9g.png)
