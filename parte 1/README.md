@@ -26,7 +26,7 @@ Todos os assuntos abaixo listados serão introduzidos com uma comparação frequ
 
 ## Snippets de Códigos
 
-### Declação de variáveis [⇧](#assuntos-abordados)
+### Declaração de variáveis [⇧](#assuntos-abordados)
 
 ```javascript
 
