@@ -14,7 +14,7 @@ Todos os assuntos abaixo listados serão introduzidos com uma comparação frequ
 * [Manipulação de Objetos](#user-content-manipulação-de-objetos-)
 * [Funções e Parâmentros](#user-content-funções-e-parâmentros-)
 * [Spread Operator e Rest Params](#user-content-spread-operator-e-rest-params-)
-* [Assincronissidade](#user-content-assincronissidade-)
+* [Assincronicidade](#user-content-assincronicidade-)
 * [Classes e Herança](#user-content-classes-e-herança-)
 * [Manipulação do DOM](#user-content-manipulação-do-dom-)
     - O que é DOM?
