@@ -7,22 +7,22 @@ Todos os assuntos abaixo listados serão introduzidos a partir de um certo conhe
 
 **Será abordado:**
 
-* [O que o React tem demais?](#user-content-o-que-o-react-tem-demais-)
-* [Web Components](#user-content-web-components-)
-* [React Components](#user-content-react-components-)
-* [Como o React funciona?](#user-content-como-o-react-funciona?-)
+* [O que o React tem demais?](#o-que-o-react-tem-demais-)
+* [Web Components](#web-components-)
+* [React Components](#react-components-)
+* [Como o React funciona?](#como-o-react-funciona?-)
     - O ambiente de desenvolvimento
     - Webpack, Babel e Browserify
-* [JSX](#user-content-jsx-)
-* [Virtual DOM](#user-content-virtual-dom-)
-* [Renderizando Componentes](#user-content-renderizando-componentes-)
-* [Props](#user-content-props-)
-* [Statefull e Stateless components](#user-content-statefull-e-stateless-components-)
-* [Lists e keys](#user-content-lists-e-keys-)
-* [Handling Events](#user-content-handling-events-)
-* [Ref](#user-content-ref-)
-* [Styling](#user-content-styling-)
-* [Introdução sobre o React Native](#user-content-introdução-sobre-o-react-native-)
+* [JSX](#jsx-)
+* [Virtual DOM](#virtual-dom-)
+* [Renderizando Componentes](#renderizando-componentes-)
+* [Props](#props-)
+* [Statefull e Stateless components](#statefull-e-stateless-components-)
+* [Lists e keys](#lists-e-keys-)
+* [Handling Events](#handling-events-)
+* [Ref](#ref-)
+* [Styling](#styling-)
+* [Introdução sobre o React Native](#introdução-sobre-o-react-native-)
 
 ## Snippets de Códigos
 
@@ -221,7 +221,7 @@ let divs = (
 );
 ```
 
-### Virtual DOM  [⇧](#assuntos-abordados)
+### Virtual DOM [⇧](#assuntos-abordados)
 
 1) Cria uma representação do DOM na linguagem do Virtual DOM;
 2) Manda o Virtual DOM gerar o DOM real;
