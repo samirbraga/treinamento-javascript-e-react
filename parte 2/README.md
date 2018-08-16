@@ -7,26 +7,26 @@ Todos os assuntos abaixo listados serão introduzidos a partir de um certo conhe
 
 **Será abordado:**
 
-* O que o React tem demais?
-* Web Components
-* React Components
-* Como o React funciona?
+* [O que o React tem demais?](#user-content-o-que-o-react-tem-demais?-)
+* [Web Components](#user-content-web-components-)
+* [React Components](#user-content-react-components-)
+* [Como o React funciona?](#user-content-como-o-react-funciona?-)
     - O ambiente de desenvolvimento
     - Webpack, Babel e Browserify
-* JSX
-* Virtual DOM
-* Renderizando Componentes
-* Props
-* Statefull e Stateless components
-* Lists e keys
-* Handling Events
-* Styling
-* Ref
-* Introdução sobre o React Native
+* [JSX](#user-content-jsx-)
+* [Virtual DOM](#user-content-virtual-dom-)
+* [Renderizando Componentes](#user-content-renderizando-componentes-)
+* [Props](#user-content-props-)
+* [Statefull e Stateless components](#user-content-statefull-e-stateless-components-)
+* [Lists e keys](#user-content-lists-e-keys-)
+* [Handling Events](#user-content-handling-events-)
+* [Ref](#user-content-ref-)
+* [Styling](#user-content-styling-)
+* [Introdução sobre o React Native](#user-content-introdução-sobre-o-react-native-)
 
 ## Snippets de Códigos
 
-### O que o React tem demais?
+### O que o React tem demais? [⇧](#assuntos-abordados)
 
 #### JQUERY ####
 ```html
@@ -68,7 +68,7 @@ class Botao extends React.Component {
 </Botao>
 ```
 
-### Web Components
+### Web Components [⇧](#assuntos-abordados)
 > *Web components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps. Custom components and widgets build on the Web Component standards, will work across modern browsers, and can be used with any JavaScript library or framework that works with HTML.*
 
 [*EXEMPLO DO GOOGLE*](https://developers.google.com/web/fundamentals/web-components/customelements?hl=pt-br)
@@ -172,7 +172,7 @@ class List extends React.Component {
 }
 ```
 
-### Como o React funciona?
+### Como o React funciona? [⇧](#assuntos-abordados)
 
 #### Webpack ####
 
@@ -182,7 +182,12 @@ class List extends React.Component {
 
 ![Babel](babel.jpg)
 
-### JSX
+### JSX  [⇧](#assuntos-abordados)
+```jsx
+// Um novo "tipo" está agora disponível
+let div = <div></div>;
+```
+
 ```jsx
 class ListItem extends React.Component {  
     render() {
@@ -206,7 +211,17 @@ class List extends React.Component {
 }
 ```
 
-### Virtual DOM
+```jsx
+// React.Fragment
+let divs = (
+    <React.Fragment>
+        <div></div>
+        <div></div>
+    </React.Fragment>
+);
+```
+
+### Virtual DOM  [⇧](#assuntos-abordados)
 
 1) Cria uma representação do DOM na linguagem do Virtual DOM;
 2) Manda o Virtual DOM gerar o DOM real;
@@ -215,3 +230,216 @@ class List extends React.Component {
 5) E usa o mecanismo de patch que vai atualizar o DOM real conforme as diferenças observadas.
 
 ![Virtual DOM](https://cdn-images-1.medium.com/max/800/1*CqdIWZy0NMPQhYx2rKzo9g.png)
+
+### Renderizando Componentes [⇧](#assuntos-abordados)
+
+```jsx
+class App extends Component { ... }
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+```
+```jsx
+// Renderização Condicional
+class LoginControl extends React.Component {
+    ...
+
+    render() {
+        const isLoggedIn = this.state.isLoggedIn;
+        let button;
+
+        if (isLoggedIn) {
+            button = <LogoutButton onClick={this.handleLogoutClick} />;
+        } else {
+            button = <LoginButton onClick={this.handleLoginClick} />
+        }
+
+        return (
+            <div>
+                ...
+                {button}
+            </div>
+        );
+    }
+}
+```
+
+### Props [⇧](#assuntos-abordados)
+
+#### Atributos ####
+
+```html
+<!--
+    Tag: div
+    Atributos: id, class, data-title 
+-->
+<div id="div-1" class="container" data-title="example of title" ></div>
+```
+```javascript
+let div = document.getElementById("div-1");
+
+div.getAttribute('data-title'); // example of title
+div.getAttribute('class'); // container
+```
+
+#### Props ####
+
+```jsx
+<App theme="dark">
+    ...
+</App>
+```
+
+```jsx
+const App = props => (
+    <div className={`app-wrapper ${props.theme}`}>
+        ...
+    </div>
+);
+```
+ou
+```jsx
+class App extends Component {
+    render() {
+        return (
+            <div className={`app-wrapper ${this.props.theme}`}>
+                ...
+            </div>
+        );
+    }
+}
+```
+
+### Statefull e Stateless components [⇧](#assuntos-abordados)
+
+#### State ####
+
+```jsx
+// Stateless (Sem estado)
+
+const MyButton = props => (
+    <button className="my-button" >
+        {props.children}
+    </button>
+);
+```
+
+```jsx
+// Statefull (Com estado)
+
+class MyButton extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            pressed: false
+        };
+
+        this.togglePress = this.togglePress.bind(this);
+    }
+
+    togglePress() {
+        this.setState({
+            togglePress: !this.state.togglePress
+        });
+    }
+
+    render() {
+        return (
+            <button
+                onPress={this.togglePress}
+                className={`my-button ${this.state.pressed ? 'pressed' : ''}`}
+            >
+                {props.children}
+            </button>
+        )
+    }
+}
+```
+
+#### Life Cicle ####
+
+```js
+class MyComponent extends Component {
+    UNSAFE_componentWillMount() { ... }
+    componentDidMount() { ... }
+
+    UNSAFE_componentWillUnmount() { ... }
+    componentDidUnmount() { ... }
+
+    UNSAFE_componentWillReceiveProps(nextProps)
+
+    UNSAFE_componentWillUpdate(nextProps, nextState) { ... }
+    componentDidUpdate(prevProps, prevState, snapshot) { ... }
+
+    shouldComponentUpdate(nextProps, nextState) { ... }
+
+    ...
+}
+```
+
+### Lists e keys [⇧](#assuntos-abordados)
+
+```jsx
+// Renderizando Listas
+class List extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            todos: [
+                'Me organizar',
+                'Ler o livro de CG',
+                'Fazer algum dos items acima'
+            ]
+        };
+    }
+
+    render() {
+        return (
+            <ul>
+                {this.state.todos.map(todo => (
+                    <li key={todo} >{todo}</li>
+                ))}
+            </ul>
+        );
+    }
+}
+```
+
+### Handling Events
+
+```jsx
+// Capturando eventos
+class List extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            todos: [
+                'Me organizar',
+                'Ler o livro de CG',
+                'Fazer algum dos items acima'
+            ]
+        };
+    }
+
+    render() {
+        return (
+            <div>
+                <ul>
+                    {this.state.todos.map(todo => (
+                        <likey={todo} >
+                            {todo}
+                        </li>
+                    ))}
+                </ul>
+                <input type="text" onInput={} />
+                <button></button>
+            </div>
+        );
+    }
+}
+```

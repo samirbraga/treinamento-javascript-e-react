@@ -198,6 +198,23 @@ const print = text => {
 const print = text => console.log(text);
 ```
 
+```javascript
+// Simulando parâmetros nomeados com objetos
+let vehicle = {
+    kind: 'car',
+    capacity: 4,
+    horses: 6,
+    year: 2015
+};
+
+const getVehicleDescription = ({ kind, capacity, horses, year }) => (
+    `This ${kind} with capacity for ${capacity} people has ${horses} horses and is ${year - new Date().getFullYear()} years old.`
+);
+
+getVehicleDescription(vehicle);
+// This car with capacity for 4 people has 6 horses and are 3 years old.
+```
+
 ### Spread Operator e Rest Params [⇧](#assuntos-abordados)
 
 ```javascript
