@@ -7,7 +7,7 @@ Todos os assuntos abaixo listados serão introduzidos a partir de um certo conhe
 
 **Será abordado:**
 
-* [O que o React tem demais?](#user-content-o-que-o-react-tem-demais?-)
+* [O que o React tem demais?](#user-content-o-que-o-react-tem-demais-)
 * [Web Components](#user-content-web-components-)
 * [React Components](#user-content-react-components-)
 * [Como o React funciona?](#user-content-como-o-react-funciona?-)
@@ -409,37 +409,187 @@ class List extends Component {
 }
 ```
 
-### Handling Events
+### Handling Events [⇧](#assuntos-abordados)
 
 ```jsx
 // Capturando eventos
 class List extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            todos: [
-                'Me organizar',
-                'Ler o livro de CG',
-                'Fazer algum dos items acima'
-            ]
-        };
-    }
+    this.state = {
+      todos: [
+        'Me organizar',
+        'Ler o livro de CG',
+        'Fazer algum dos items acima'
+      ]
+    };
+  }
 
-    render() {
-        return (
-            <div>
-                <ul>
-                    {this.state.todos.map(todo => (
-                        <likey={todo} >
-                            {todo}
-                        </li>
-                    ))}
-                </ul>
-                <input type="text" onInput={} />
-                <button></button>
-            </div>
-        );
-    }
+  addTodo() {
+    this.setState(prevState => {
+      let { todos } = prevState;
+      todos.push('Uma nova tarefa.');
+      return {
+        todos
+      };
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.todos.map(todo => (
+            <li key= { todo } >
+              { todo }
+            </li>
+          ))}
+        </ul>
+        <button onClick={this.addTodo.bind(this)}>Adicionar</button>
+      </div>
+    );
+  }
+}
+```
+
+```jsx
+// Capturando eventos
+class List extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todos: [
+        "Me organizar",
+        "Ler o livro de CG",
+        "Fazer algum dos items acima"
+      ],
+      newTodo: ""
+    };
+  }
+
+  handleInput(event) {
+    this.setState({
+      newTodo: event.target.value
+    });
+  }
+
+  addTodo() {
+    this.setState(prevState => {
+      let { todos } = prevState;
+
+      if (this.state.newTodo) {
+        todos.push(this.state.newTodo);
+      }
+
+      return {
+        todos
+      };
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>{this.state.todos.map(todo => <li key={todo}>{todo}</li>)}</ul>
+        <input type="text" onInput={this.handleInput.bind(this)} />
+        <button onClick={this.addTodo.bind(this)}>Adicionar</button>
+      </div>
+    );
+  }
+}
+```
+
+### Ref [⇧](#assuntos-abordados)
+```jsx
+// Capturando eventos
+class List extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todos: [
+        "Me organizar",
+        "Ler o livro de CG",
+        "Fazer algum dos items acima"
+      ],
+      newTodo: ""
+    };
+
+    this.textInput = React.createRef();
+  }
+
+  handleInput(event) {
+    this.setState({
+      newTodo: event.target.value
+    });
+  }
+
+  addTodo() {
+    this.setState(prevState => {
+      let { todos } = prevState;
+
+      if (this.state.newTodo) {
+        todos.push(this.state.newTodo);
+        this.textInput.current.value = "";
+      }
+
+      return {
+        todos
+      };
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>{this.state.todos.map(todo => <li key={todo}>{todo}</li>)}</ul>
+        <input ref={this.textInput} type="text" onInput={this.handleInput.bind(this)} />
+        <button onClick={this.addTodo.bind(this)}>Adicionar</button>
+      </div>
+    );
+  }
+}
+```
+
+### Styling [⇧](#assuntos-abordados)
+
+```jsx
+// Estilizando componentes com objetos
+class Element extends Component {
+  render() {
+    return (
+      <div
+        style={{
+            width: '200px',
+            height: '220px',
+            backgroundColor: 'cornflowerblue'
+        }} />
+    );
+  }
+}
+```
+---------
+#### JSX ####
+```jsx
+import './style.css';
+
+// Estilizando componentes com classes
+class Element extends Component {
+  render() {
+    return (
+      <div className="element" />
+    );
+  }
+}
+```
+
+#### style.css ####
+```css
+.element {
+    width: 200px;
+    height: 220px;
+    background-color: cornflowerblue;
 }
 ```
