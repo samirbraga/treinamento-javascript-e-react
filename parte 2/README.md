@@ -594,3 +594,74 @@ class Element extends Component {
     background-color: cornflowerblue;
 }
 ```
+
+### HANDSON EM AULA
+
+#### App.js ####
+
+```jsx
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+import "./style.css";
+
+const ListItem = props => <li className="list-item">{props.text}</li>;
+
+class List extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todos: [
+        "Ler o livro de CG",
+        "Ler o livro de MN",
+        "Descansar",
+        "Estudar de novo"
+      ],
+      currentTodo: ""
+    };
+
+    this.textInput = React.createRef();
+  }
+
+  addTodo() {
+    let { todos } = this.state;
+    todos.push(this.state.currentTodo);
+    this.setState({
+      todos
+    });
+
+    this.textInput.current.value = "";
+  }
+
+  getNewTodo(event) {
+    let input = event.target;
+    this.setState({
+      currentTodo: input.value
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>{this.state.todos.map(todo => <ListItem text={todo} />)}</ul>
+        <input
+          ref={this.textInput}
+          onInput={this.getNewTodo.bind(this)}
+          type="text"
+        />
+        <button onClick={this.addTodo.bind(this)}>Adicionar</button>
+        <br />
+      </div>
+    );
+  }
+}
+
+class App extends Component {
+  render() {
+    return <List />;
+  }
+}
+
+export default App;
+```
