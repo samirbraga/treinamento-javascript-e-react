@@ -22,6 +22,7 @@ Todos os assuntos abaixo listados serão introduzidos a partir de um certo conhe
 * [Handling Events](#handling-events-)
 * [Ref](#ref-)
 * [Styling](#styling-)
+* [Curiosidades](#curiosidades-)
 * Introdução sobre o React Native
 * [**HANDSON**](https://codesandbox.io/s/61q0mzrvlk)
 
@@ -51,12 +52,12 @@ $('.botao').on('click', function() {
 // Elemento criado dinamicamente
 // Manipulação concorrente
 class Botao extends React.Component {
-    alert() {
+    alert = () => {
         alert(this.props.description)
     }
 
     render() {
-        <button onClick={this.alert.bind(this)}>
+        <button onClick={this.alert}>
             {this.props.children}
         </button>
     } 
@@ -594,6 +595,17 @@ class Element extends Component {
     background-color: cornflowerblue;
 }
 ```
+
+### Curiosidades [⇧](#assuntos-abordados)
+
+- Server rendering with [Next.js](https://nextjs.org)
+- Tests with [Jest](https://jestjs.io/)
+- Gerenciando o estado da aplicação com [Redux](https://redux.js.org/)
+- [React Hooks](https://pt-br.reactjs.org/docs/hooks-intro.html)
+    - https://twitter.com/prchdk/status/1056960391543062528
+    - https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889
+- Desktop application with [Electron](https://electronjs.org/)
+    - https://www.freecodecamp.org/news/building-an-electron-application-with-create-react-app-97945861647c/
 
 ### HANDSON EM AULA
 
