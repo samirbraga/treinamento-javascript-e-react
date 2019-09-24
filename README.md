@@ -11,6 +11,7 @@ Este repositório é dedicado apenas para auxílio da aula referente ao Workshop
 
 - https://webpack.js.org/
 - https://babeljs.io/
+- https://codesandbox.io/
 - https://nodejs.org/en/
 - https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Workers_API
 - https://webassembly.org/
