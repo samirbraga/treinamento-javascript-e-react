@@ -6,3 +6,11 @@ Este repositório é dedicado apenas para auxílio da aula referente ao Workshop
 
 [1]: /parte%201/README.md
 [2]: /parte%202/README.md
+
+## Curiosidades:
+
+- https://webpack.js.org/
+- https://babeljs.io/
+- https://nodejs.org/en/
+- https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Workers_API
+- https://webassembly.org/
