@@ -1,11 +1,19 @@
-# Workshop - JavaScript e ReactJS
-Este repositório é dedicado apenas para auxílio da aula referente ao Workshop - JavaScript e ReactJS. As aulas serão divididas em duas partes:
+# Treinamento - JavaScript e ReactJS
+Este repositório é dedicado apenas para auxílio das aulas referentes ao Treinamento - JavaScript e ReactJS.
 
-* [Parte I][1] - Foco em Javascript
-* [Parte II][2] - Foco em ReactJs
+* [Aula 1][1] - Revisão e Nivelamento dos Conhecimentos
+* [Aula 2][2] - Contexto e Conceitos iniciais
+* [Aula 3][3] - Comunicação com Servidores e Roteamento
+* [Aula 4][4] - Estado da aplicação
+* [Aula 5][5] - Desenvolvendo e Disponibilizando Aplicações Robustas e Resilientes
+* [Aula 6][6] - Indo Além do Javascript
 
-[1]: /parte%201/README.md
-[2]: /parte%202/README.md
+[1]: /Aula%201/README.md
+[2]: /Aula%202/README.md
+[3]: /Aula%203/README.md
+[4]: /Aula%204/README.md
+[5]: /Aula%205/README.md
+[6]: /Aula%206/README.md
 
 ## Curiosidades:
 

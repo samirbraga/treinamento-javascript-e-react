@@ -47,7 +47,7 @@ $('.botao').on('click', function() {
 ```
 
 #### REACT ####
-```javascript
+```jsx
 
 // Elemento criado dinamicamente
 // Manipulação concorrente

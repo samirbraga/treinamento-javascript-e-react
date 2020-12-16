@@ -6,23 +6,29 @@ Todos os assuntos abaixo listados serão introduzidos com uma comparação frequ
 
 **Será abordado:**
 
-* [Declaração de Variáveis](#user-content-declaração-de-variáveis-)
-* [Tipos de Dados](#user-content-tipos-de-dados-)
-* [Arrays](#user-content-arrays-)
-* [Objetos](#user-content-objetos-)
-* [Manipulação de Arrays (Iterador e Métodos)](#user-content-manipulação-de-arrays-)
-* [Manipulação de Objetos](#user-content-manipulação-de-objetos-)
-* [Funções e Parâmentros](#user-content-funções-e-parâmentros-)
-* [Spread Operator e Rest Params](#user-content-spread-operator-e-rest-params-)
-* [Assincronicidade](#user-content-assincronicidade-)
-* [Classes e Herança](#user-content-classes-e-herança-)
-* [Manipulação do DOM](#user-content-manipulação-do-dom-)
-    - O que é DOM?
-    - Eventos
-    - Seleção e manipulação de elementos
-    - Estilos dinâmicos
-    - CSS Transform
-* [**HANDSON**](http://jsfiddle.net/SamirChaves/cfgwzs94/embedded/result/#Result)
+- Rápida revisão de Javascript e ES6
+    * [Declaração de Variáveis](#user-content-declaração-de-variáveis-)
+    * [Tipos de Dados](#user-content-tipos-de-dados-)
+    * [Arrays](#user-content-arrays-)
+    * [Objetos](#user-content-objetos-)
+    * [Manipulação de Arrays (Iterador e Métodos)](#user-content-manipulação-de-arrays-)
+    * [Manipulação de Objetos](#user-content-manipulação-de-objetos-)
+    * [Funções e Parâmentros](#user-content-funções-e-parâmentros-)
+    * [Spread Operator e Rest Params](#user-content-spread-operator-e-rest-params-)
+    * [Assincronicidade](#user-content-assincronicidade-)
+    * [Classes e Herança](#user-content-classes-e-herança-)
+- Revisão sobre os elementos de uma página web
+    * [Manipulação do DOM](#user-content-manipulação-do-dom-)
+        - O que é DOM?
+        - Eventos
+        - Seleção e manipulação de elementos
+        - Estilos dinâmicos
+        - CSS Transform
+
+    * [BOM - Browser Object Model]()
+        - Document, navigator, frames, location, history e screen.
+    * [**HANDSON**]
+        - [React](http://jsfiddle.net/SamirChaves/cfgwzs94/embedded/result/#Result)
 
 ## Snippets de Códigos
 
