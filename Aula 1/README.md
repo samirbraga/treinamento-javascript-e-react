@@ -1,8 +1,9 @@
-# Workshop - JavaScript e ReactJS - Parte I
-Este arquivo é dedicado ao auxílio da aula referente a parte I do Workshop - JavaScript e ReactJS. Tenha acesso a parte II [aqui](../parte%202/README.md).
+# Aula 1 - Treinamento ReactJS
 
 ## Assuntos abordados
-Todos os assuntos abaixo listados serão introduzidos com uma comparação frequente entre as versões **ES5** e **ES6/7**. Os temas priorizam o que será necessário para adentrar no universo do ReactJs na parte II do Workshop.
+Todos os assuntos abaixo listados serão introduzidos com uma comparação frequente entre as versões **ES5** e **ES6/7**. Os temas priorizam o que será necessário para adentrar no universo do ReactJs, o qual será abordado nas próximas aulas.
+
+**[Refêrencia](https://javascript.info/)**
 
 **Será abordado:**
 
