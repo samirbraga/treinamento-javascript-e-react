@@ -278,7 +278,7 @@ function join() {
 function join(...strings) {
     var initialString = "";
     for (let str of strings) {
-        initialString += arguments[i];
+        initialString += str
     }
 
     return initialString;
