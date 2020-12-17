@@ -25,10 +25,11 @@ Todos os assuntos abaixo listados serão introduzidos com uma comparação frequ
         - Estilos dinâmicos
         - CSS Transform
 
-    * [BOM - Browser Object Model]()
+    * [BOM - Browser Object Model](#user-content-bom---browser-object-model)
         - Document, navigator, frames, location, history e screen.
-    * [**HANDSON**]
-        - [React](http://jsfiddle.net/SamirChaves/cfgwzs94/embedded/result/#Result)
+- **HANDSON**
+    * [Javascript](http://jsfiddle.net/SamirChaves/cfgwzs94/)
+    * [React](https://codesandbox.io/s/sleepy-bassi-dxge2)
 
 ## Snippets de Códigos
 
@@ -366,4 +367,37 @@ div.style.opacity = 0;
 div.addEventListener("click", e => {
     console.log("Clicado!");
 });
+```
+
+
+### BOM - Browser Object Model [⇧](#assuntos-abordados)
+
+```javascript
+// Acessando o DOM
+window.document
+
+// Acessando informações do browser
+window.navigator.userAgent // Descrição
+navigator.language // língua
+navigator.deviceMemory // memória RAM do dispositivo
+navigator.vibrate(200) // faz o dispositivo vibrar durante 200 milisegundos
+
+// Acesso ao frames da aplicação
+window.frames
+
+// Acesso ao endereço da página
+window.location.href // URL
+window.location.hostname // domínio
+window.location.pathname // caminho
+window.location.protocol // protocolo
+
+// Histórico de navegação da página
+window.history.back() // Voltar no histórico
+history.go(-3) // Voltar 3 vezes no histórico
+history.forward() // Avançar no histórico
+history.length // Tamanho do histórico
+
+// Informações sobre a tela do dispositivo
+screen.width // largura em pixels
+screen.height // altura em pixels
 ```
