@@ -1,25 +1,39 @@
 # Aula 2 - Treinamento - JavaScript e ReactJS
 
+**Refêrencias**
+  - [React.js](https://pt-br.reactjs.org/)
+  - [Create-React-App](https://create-react-app.dev/docs/getting-started/)
+  - [Reconciliation](https://reactjs.org/docs/reconciliation.html)
+
 ## Assuntos Abordados
 
-* [O que o React tem demais?](#o-que-o-react-tem-demais-)
-* [Web Components](#web-components-)
-* [React Components](#react-components-)
-* [Como o React funciona?](#como-o-react-funciona?-)
-    - O ambiente de desenvolvimento
-    - Webpack, Babel e Browserify
-* [JSX](#jsx-)
-* [Virtual DOM](#virtual-dom-)
-* [Renderizando Componentes](#renderizando-componentes-)
-* [Props](#props-)
-* [Statefull e Stateless components](#statefull-e-stateless-components-)
-* [Lists e keys](#lists-e-keys-)
-* [Handling Events](#handling-events-)
-* [Ref](#ref-)
-* [Styling](#styling-)
-* [Curiosidades](#curiosidades-)
-* Introdução sobre o React Native
-* [**HANDSON**](https://codesandbox.io/s/61q0mzrvlk)
+- Iniciando com React
+  * [O que o React tem demais?](#o-que-o-react-tem-demais-)
+  * [Web Components](#web-components-)
+  * [React Components](#react-components-)
+  * [Como o React funciona?](#como-o-react-funciona?-)
+      - O ambiente de desenvolvimento
+      - Webpack, Babel e Browserify
+  * [JSX](#jsx-)
+  * [Virtual DOM](#virtual-dom-)
+  * [Renderizando Componentes](#renderizando-componentes-)
+  * [Props](#props-)
+  * [Statefull e Stateless components](#statefull-e-stateless-components-)
+  * [Lists e keys](#lists-e-keys-)
+  * [Handling Events](#handling-events-)
+  * [Ref](#ref-)
+  * [Styling](#styling-)
+  * [Curiosidades](#curiosidades-)
+- [Gerenciamento dos Estados](#gerenciamento-dos-estados-)
+  * Estado com ClassComponent
+  * Estado com FunctionComponent e Hooks API
+  * Conhecendo os principais Hooks
+  * Criando hooks customizados
+- [Construindo uma aplicação Hello World](#construindo-uma-aplicação-hello-world-)
+  * Conhecendo o ambiente de desenvolvimento local
+  * Instalação de dependências
+  * Criando e conectando componentes
+  * Estilizando componentes
 
 ## Snippets de Códigos
 
@@ -56,6 +70,18 @@ class Botao extends React.Component {
             {this.props.children}
         </button>
     } 
+}
+
+const Botao = ({ description, children }) => {
+    function _alert() {
+        alert(description)
+    }
+
+    return (
+        <button onClick={_alert}>
+            {children}
+        </button>
+    )
 }
 ```
 
@@ -602,9 +628,9 @@ class Element extends Component {
 - Desktop application with [Electron](https://electronjs.org/)
     - https://www.freecodecamp.org/news/building-an-electron-application-with-create-react-app-97945861647c/
 
-### HANDSON EM AULA
+### Gerenciamento dos Estados [⇧](#assuntos-abordados)
 
-#### App.js ####
+#### [ClassComponent - Exemplo](https://jsfiddle.net/SamirChaves/amc1Lbvs/7/) ####
 
 ```jsx
 import React, { Component } from "react";
@@ -632,10 +658,9 @@ class List extends Component {
   }
 
   addTodo() {
-    let { todos } = this.state;
-    todos.push(this.state.currentTodo);
-    this.setState({
-      todos
+    this.setState(({ todos }) => {
+      todos.push(this.state.currentTodo);
+      return todos
     });
 
     this.textInput.current.value = "";
@@ -671,4 +696,97 @@ class App extends Component {
 }
 
 export default App;
+```
+
+#### [FunctionComponent e Hooks API - Exemplo](https://codesandbox.io/s/optimistic-christian-rnr6u) ####
+
+```jsx
+import React, { useState, useRef } from "react";
+
+const ListItem = (props) => <li className="list-item">{props.text}</li>;
+
+const TodoList = () => {
+  const [todos, setTodos] = useState([
+    "Ler o livro de CG",
+    "Ler o livro de MN",
+    "Descansar",
+    "Estudar de novo"
+  ]);
+  const [currentTodo, setCurrentTodo] = useState("");
+  const textInput = useRef();
+
+  function addTodo() {
+    setTodos(todos => {
+      return [...todos, currentTodo];
+    });
+
+    textInput.current.value = "";
+  }
+
+  function getNewTodo(event) {
+    let input = event.target;
+    setCurrentTodo(input.value);
+  }
+
+  return (
+    <div>
+      <ul>
+        {todos.map((todo) => (
+          <ListItem text={todo} />
+        ))}
+      </ul>
+      <input ref={textInput} onInput={getNewTodo} type="text" />
+      <button onClick={addTodo}>Adicionar</button>
+      <br />
+    </div>
+  );
+};
+
+const App = () => {
+  return <TodoList />;
+};
+
+export default App;
+```
+
+### [Principais Hooks](https://reactjs.org/docs/hooks-reference.html#gatsby-focus-wrapper)
+
+#### Hooks Básicos
+- useState
+- useEffect
+- useContext
+
+#### Hooks Adicionais
+- useReducer
+- useCallback
+- useMemo
+- useRef
+- useImperativeHandle
+- useLayoutEffect
+- useDebugValue
+
+### [Contruindos Hooks Personalizados](https://reactjs.org/docs/hooks-custom.html)
+
+```jsx
+function useInterval(time, callback) {
+  const interval = useRef();
+  useEffect(() => {
+    interval.current = setInterval(callback, time);
+    return () => {
+      return clearInterval(interval.current);
+    };
+  }, [time, callback]);
+
+  return () => {
+    clearInterval(interval.current);
+  };
+}
+```
+
+[**EXEMPLO**](https://codesandbox.io/s/damp-fire-orv9z)
+
+## Construindo uma aplicação Hello World [⇧](#assuntos-abordados)
+
+```shell
+npx create-react-app my-super-app
 ```
