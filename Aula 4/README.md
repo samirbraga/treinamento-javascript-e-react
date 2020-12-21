@@ -259,7 +259,7 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
 ```
 
-### Hooks
+### [Hooks](https://react-redux.js.org/api/hooks)
 
 ```js
 const counter = useSelector(state => state.counter)
@@ -271,6 +271,18 @@ const dispatch = useDispatch()
 
 ```js
 const store = useStore()
+```
+
+### Alterando Estado sem `connect`
+
+```js
+const dispatch = useDispatch()
+const incrementCounter = useCallback(
+  () => dispatch({ type: 'increment-counter' }),
+  [dispatch]
+)
+
+incrementCounter()
 ```
 
 ## [**HANDSON**](https://codesandbox.io/s/black-worker-ljv8u)
