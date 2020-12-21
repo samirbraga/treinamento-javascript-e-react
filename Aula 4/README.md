@@ -113,4 +113,164 @@ const ColorPicker = () => {
 
 ![Redux Pattern Components](https://www.dotnetcurry.com/images/reactjs/redux/redux.png)
 
-### [**HANDSON**](https://codesandbox.io/s/black-worker-ljv8u)
+### Actions
+
+```js
+// actionsTypes.js
+
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
+export const RESET = "RESET";
+export const ADD = "ADD";
+```
+
+```js
+// actions.js
+
+import { ADD, DECREMENT, INCREMENT, RESET } from "./actionTypes";
+
+export function increment() {
+  return {
+    type: INCREMENT
+  };
+}
+
+export function decrement() {
+  return {
+    type: DECREMENT
+  };
+}
+
+export function reset() {
+  return {
+    type: RESET
+  };
+}
+
+export function add(amount) {
+  return {
+    type: ADD,
+    payload: amount
+  };
+}
+```
+
+### Reducer
+
+```js
+import { ADD, DECREMENT, INCREMENT, RESET } from "./actionTypes";
+
+const initialState = 0;
+
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    case RESET:
+      return 0;
+    case ADD:
+      return state + action.payload;
+    default:
+      return state;
+  }
+}
+```
+
+### Store
+
+```js
+import { createStore } from "redux";
+import reducer from "./reducer";
+
+export default createStore(reducer);
+```
+
+### Acessando o Estado
+```js
+import store from "../redux/store";
+
+store.getState()
+```
+
+### Alterando o Estado por meio de Ações
+```js
+import { decrement } from "../redux/actions";
+import store from "../redux/store";
+
+...
+
+store.dispatch(decrement())
+
+...
+```
+
+### Escutando por Alteração no Estado
+
+```js
+import React, { useEffect, useState } from "react";
+import store from "../redux/store";
+
+export default function CounterApp() {
+  const [counter, setCounter] = useState(store.getState());
+
+  useEffect(() => {
+    store.subscribe(() => {
+      setCounter(store.getState());
+    });
+  }, []);
+
+  return <h1>Counter: {counter}</h1>;
+}
+```
+
+## React Redux
+
+Populando o `store` aos nossos componentes.
+```js
+const store = createStore(rootReducer)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+```
+
+Mapeando cada `dispatch` e estado em propriedades do componente.
+
+```js
+const TodoList = () => {
+  ...
+}
+
+const mapStateToProps = (state) => {
+  return {
+    todos: state
+  };
+};
+
+const mapDispatchToProps = {
+  addTodo
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+```
+
+### Hooks
+
+```js
+const counter = useSelector(state => state.counter)
+```
+
+```js
+const dispatch = useDispatch()
+```
+
+```js
+const store = useStore()
+```
+
+## [**HANDSON**](https://codesandbox.io/s/black-worker-ljv8u)
