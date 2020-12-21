@@ -4,6 +4,11 @@ O foco desta aula é entendermos como os componentes da aplicação necessitam, 
 
 Esses componentes podem estar "próximos" na árvore do Virtual DOM, o que nos pode levar a tentar realizar esse compartilhamento por meios da propriedades (`props`). No entanto, quando esses componentes estão em contextos e locais diferentes no app, devemos fazer com que ambos se comuniquem com uma mesma entidade, responsável por gerenciar os dados (ou estado) naquele contexto.
 
+## Referências
+ - [ReduxJs](https://redux.js.org/)
+ - [React Redux](https://react-redux.js.org/)
+ - [ReduxJs - Async Logic](https://redux.js.org/tutorials/essentials/part-5-async-logic#thunks-and-async-logic)
+
 ## Assuntos Abordados
 
 * Gerenciamento do Estado
