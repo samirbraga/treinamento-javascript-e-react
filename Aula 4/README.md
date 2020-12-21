@@ -286,3 +286,9 @@ incrementCounter()
 ```
 
 ## [**HANDSON**](https://codesandbox.io/s/black-worker-ljv8u)
+
+## Extensões
+
+- [Redux-Saga](https://redux-saga.js.org/)
+- [Redux-Thunk](https://www.npmjs.com/package/redux-thunk)
+- [DVA](https://dvajs.com/api/#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6)
