@@ -27,7 +27,7 @@ const api = axios.create({
 api.get('/characters')
 .then(res => ...)
 .catch(error => {
-    alert(error.message) // don't alert
+    alert(error.message) // don't alert 
 })
 
 ...
@@ -89,4 +89,4 @@ it('CheckboxWithLabel changes the text after click', () => {
 npm run build
 ```
 
-
+## [HANDSON](https://codesandbox.io/s/admiring-shaw-u3qdg?file=/src/components/CharacterCard.js)
