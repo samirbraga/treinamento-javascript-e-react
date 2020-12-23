@@ -41,6 +41,44 @@ axios.interceptors.response.use(function (response) {
 });
 ```
 
+## Error Boundaries
+ 
+> Error boundaries não capturam erros em:
+> 
+> - Manipuladores de evento (saiba mais)
+> - Código assíncrono (ex. callbacks de setTimeout ou requestAnimationFrame)
+> - Renderização no servidor
+> - Erros lançados na própria error boundary (ao invés de em seus filhos)
+
+```jsx
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Atualiza o state para que a próxima renderização mostre a UI alternativa.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // Você também pode registrar o erro em um serviço de relatórios de erro
+    logErrorToMyService(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // Você pode renderizar qualquer UI alternativa
+      return <h1>Algo deu errado.</h1>;
+    }
+
+    return this.props.children; 
+  }
+}
+```
+[**Exemplo**](https://codepen.io/gaearon/pen/wqvxGa?editors=0010)
+
 ## Testando Nossa Aplicação
 
 ### [Jest](https://jestjs.io/docs/en/getting-started)
