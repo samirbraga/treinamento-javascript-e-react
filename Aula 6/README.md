@@ -4,6 +4,10 @@ Como vimos ao longo das aulas anterioes, o Javascript é uma linguagem bastante 
 
 Um alternativa para nos ajudar na tarefa de deixar o código Javascript mais compreensível e auto-documentável é o Typescript.
 
+## Referências
+
+- [Typescript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+
 ## Assuntos Abordados
 
 - Introdução ao Typescript
@@ -19,7 +23,6 @@ Um alternativa para nos ajudar na tarefa de deixar o código Javascript mais com
   * Tipos com Axios
 - Encerramento
   * Revisão Geral
-  * Encaminhamentos e fontes de estudo
 
 ## Tipos Básicos
 
@@ -205,5 +208,268 @@ function buildName(firstName: string, ...restOfName: string[]) {
  */
 function padLeft(value: string, padding: string | number) {
   // ...
+}
+```
+
+## Classes
+```ts
+class Greeter {
+  greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+
+let greeter = new Greeter("world");
+```
+
+### Private methods and attributes
+```ts
+class Animal {
+  private name: string;
+
+  constructor(theName: string) {
+    this.name = theName;
+  }
+}
+
+new Animal("Cat").name;
+```
+> Property 'name' is private and only accessible within class 'Animal'.
+
+
+### Abstract Classes
+```ts
+abstract class Department {
+  constructor(public name: string) {}
+
+  printName(): void {
+    console.log("Department name: " + this.name);
+  }
+
+  abstract printMeeting(): void; // must be implemented in derived classes
+}
+```
+
+## Generics
+
+Sem o `generics`, nós podemos ou definir a função identidade com um tipo específico:
+
+```ts
+function identity(arg: number): number {
+  return arg;
+}
+```
+
+Ou, podemos descrevê-la usando o tipo `any`:
+```ts
+function identity(arg: any): any {
+  return arg;
+}
+```
+
+Porém, com `generics` é possível criar uma *variável de tipo* que permite que os tipos sejam repassados pelo usuário:
+```ts
+function identity<T>(arg: T): T {
+  return arg;
+}
+```
+
+### Typed Array Operations
+```ts
+interface Array<T> {
+  length: number;
+
+  map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
+
+  filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];
+
+  some(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;
+}
+```
+
+### Generic Classes
+```ts
+class GenericNumber<T> {
+  zeroValue: T;
+  add: (x: T, y: T) => T;
+}
+```
+
+## Typescript com React
+
+### Criando um App com Typescript
+
+```sh
+npx create-react-app my-app --template typescript
+```
+
+### Componentes
+
+```ts
+import React, { FunctionComponent } from 'react'
+
+const MyComponent: FunctionComponent = () => {
+  return ( ... )
+}
+```
+
+Ou
+
+```ts
+import React, { FC } from 'react'
+
+const MyComponent: FC = () => {
+  return ( ... )
+}
+```
+
+### Definindo tipos de propriedades
+
+```ts
+import React, { FunctionComponent } from 'react'
+
+export interface MyComponentsProps {
+  title: string,
+  description: string,
+  amount: number,
+  createdAt: Date
+}
+
+const MyComponent: FunctionComponent<MyComponentsProps> = ({ title, description, amount, createdAt }) => {
+  return ( ... )
+}
+```
+
+### Hooks com tipos
+
+```ts
+import React, { useState } from 'react'
+
+interface User {
+  id: number,
+  name: string,
+  email: string,
+  pictureUrl: string,
+  birthdate: Date
+}
+
+const UsersPage: FC = () => {
+  const [users, setUsers] = useState<User[]>([])
+
+  return ( ... )
+}
+```
+
+```ts
+const inputEl = useRef<HTMLInputElement>(null);
+```
+
+```ts
+type Theme = 'light' | 'dark';
+const ThemeContext = createContext<Theme>('dark');
+```
+
+### Redux
+
+```ts
+export interface Message {
+  user: string
+  message: string
+  timestamp: number
+}
+
+export interface ChatState {
+  messages: Message[]
+}
+```
+
+```ts
+// src/store/chat/types.ts
+export const SEND_MESSAGE = 'SEND_MESSAGE'
+export const DELETE_MESSAGE = 'DELETE_MESSAGE'
+
+interface SendMessageAction {
+  type: typeof SEND_MESSAGE
+  payload: Message
+}
+
+interface DeleteMessageAction {
+  type: typeof DELETE_MESSAGE
+  meta: {
+    timestamp: number
+  }
+}
+
+export type ChatActionTypes = SendMessageAction | DeleteMessageAction
+```
+
+```ts
+// src/store/chat/reducers.ts
+
+import {
+  ChatState,
+  ChatActionTypes,
+  SEND_MESSAGE,
+  DELETE_MESSAGE
+} from './types'
+
+const initialState: ChatState = {
+  messages: []
+}
+
+export function chatReducer(
+  state = initialState,
+  action: ChatActionTypes
+): ChatState {
+  switch (action.type) {
+    case SEND_MESSAGE:
+      return {
+        messages: [...state.messages, action.payload]
+      }
+    case DELETE_MESSAGE:
+      return {
+        messages: state.messages.filter(
+          message => message.timestamp !== action.meta.timestamp
+        )
+      }
+    default:
+      return state
+  }
+}
+```
+
+## Arquivo `tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "src"
+  ]
 }
 ```
