@@ -1,6 +1,6 @@
 # Aula 5 - Treinamento - JavaScript e ReactJS
 
-Erros ocorrem, queira você ou não. Mantendo isso em mente, o objetivo dessa aula é entender como lindar com essas situações adversas e evitar ao máximo que comprometam a experiência do usuário. Além disso, veremos como preparar nossa aplicação para o ambiente de produção.
+Erros ocorrem, queira você ou não. Mantendo isso em mente, o objetivo dessa aula é entender como lidar com essas situações adversas e evitar ao máximo que comprometam a experiência do usuário. Além disso, veremos como preparar nossa aplicação para o ambiente de produção.
 
 - Tratamento de Exceções
     * Apresentando erros ao usuário
